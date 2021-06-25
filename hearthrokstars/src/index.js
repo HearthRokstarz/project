@@ -1,12 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { StateProvider } from './Provider';
+import { Form } from './Form';
+import { Cards } from './Cards';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <StateProvider>
+      {/* <App /> */}
+      <Form />
+      <Cards />
+    </StateProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
