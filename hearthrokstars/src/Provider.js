@@ -5,8 +5,10 @@ const initialState = [];
 const charContext = React.createContext(initialState);
 const { Provider } = charContext;
 
+//Action Types
 const ADD_CHAR = 'ADD_CHAR';
 
+//Reducer
 const reducer = (state, action) => {
   switch (action.type) {
     case ADD_CHAR:

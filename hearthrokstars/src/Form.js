@@ -19,23 +19,29 @@ export function Form() {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Name:
-          <input
-            type='text'
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <input
-            type='number'
-            value={initiative}
-            onChange={(e) => setInitiative(e.target.value)}
-          />
-        </label>
-        <input type='submit' value='!' />
-      </form>
+    <div class='columns is-vcentered'>
+      <div class='column is-half is-offset-one-quarter'>
+        <form onSubmit={handleSubmit}>
+          <label>
+            <input
+              class='input'
+              type='text'
+              value={name}
+              placeholder='Name'
+              onChange={(e) => setName(e.target.value)}
+            />
+            <input
+              class='input'
+              type='number'
+              value={initiative}
+              onChange={(e) => setInitiative(e.target.value)}
+            />
+          </label>
+          <div class='column is-4 is-offset-5'>
+            <input class='button is-primary' type='submit' value='Submit' />
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

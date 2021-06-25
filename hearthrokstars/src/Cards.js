@@ -8,13 +8,19 @@ export const Cards = () => {
   return (
     <div>
       {characters ? (
-        characters.map((character, i) => {
-          return (
-            <p key={i}>
-              {character.name}, {character.initiative}
-            </p>
-          );
-        })
+        <div class='columns'>
+          {characters.map((character, i) => {
+            return (
+              <div class='column is-narrow'>
+                <div class='box' style={{ width: '200px' }}>
+                  <p key={i} class='bd-notification is-primary'>
+                    {character.name} {character.initiative}
+                  </p>
+                </div>
+              </div>
+            );
+          })}{' '}
+        </div>
       ) : (
         <div></div>
       )}
