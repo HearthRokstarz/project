@@ -4,12 +4,15 @@ import { charContext } from './Provider';
 export const Cards = () => {
   const charState = useContext(charContext);
   const characters = charState.state;
+  const sortedChars = characters
+    .slice()
+    .sort((a, b) => b.initiative - a.initiative);
 
   return (
     <div>
-      {characters ? (
+      {sortedChars ? (
         <div class='columns'>
-          {characters.map((character, i) => {
+          {sortedChars.map((character, i) => {
             return (
               <div class='column is-narrow'>
                 <div class='box' style={{ width: '200px' }}>
