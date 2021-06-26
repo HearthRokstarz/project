@@ -4,13 +4,12 @@ import { StateProvider } from './Provider';
 import { Form } from './Form';
 import { Cards } from './Cards';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+//StateProvider passes our stateful data down to all of our child components
 ReactDOM.render(
   <React.StrictMode>
     <StateProvider>
-      {/* <App /> */}
       <Form />
       <Cards />
     </StateProvider>
