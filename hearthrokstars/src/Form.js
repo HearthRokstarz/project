@@ -13,7 +13,7 @@ export function Form() {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     alert('Things are a-happening!');
-    const character = { name: name, initiative: initiative };
+    const character = { name: name, initiative: initiative, isTurn: false };
     dispatch({ type: 'ADD_CHAR', value: character });
     console.log(charState);
     setName('');
@@ -43,6 +43,9 @@ export function Form() {
             <input class='button is-primary' type='submit' value='Submit' />
           </div>
         </form>
+        <div class='column is-4 is-offset-5'>
+          <button class='button is-danger '>Turn</button>
+        </div>
       </div>
     </div>
   );
