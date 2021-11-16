@@ -20,6 +20,12 @@ export function Form() {
     setInitiative(0);
   };
 
+  //not done
+  const handleTurn = () => {
+    console.log('handling turn');
+    dispatch({ type: 'CHANGE_TURN' });
+  };
+
   return (
     <div class='columns is-vcentered'>
       <div class='column is-half is-offset-one-quarter'>
@@ -44,7 +50,9 @@ export function Form() {
           </div>
         </form>
         <div class='column is-4 is-offset-5'>
-          <button class='button is-danger '>Turn</button>
+          <button class='button is-danger' onClick={handleTurn}>
+            Turn
+          </button>
         </div>
       </div>
     </div>

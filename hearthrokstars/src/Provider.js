@@ -17,10 +17,12 @@ const turnChanger = (arr) => {
   let curr = 0;
   while (!arr[curr].isTurn) {
     let next = curr + 1;
-    if (arr[next].isTurn) {
-      arr[next].isTurn = false;
-      arr[next + 1] ? (arr[next + 1].isTurn = true) : (arr[0].isTurn = true);
-      return arr;
+    if (arr[next]) {
+      if (arr[next].isTurn) {
+        arr[next].isTurn = false;
+        arr[next + 1] ? (arr[next + 1].isTurn = true) : (arr[0].isTurn = true);
+        return arr;
+      }
     }
     curr++;
   }
@@ -29,7 +31,7 @@ const turnChanger = (arr) => {
 };
 
 //This Reducer allows us to pass in state (see below) and an action object (above) and will make/rerturn changes to state based on the action type
-const reducer = (state, action) => {
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_CHAR:
       console.log('adding character');
@@ -41,7 +43,10 @@ const reducer = (state, action) => {
         .sort((a, b) => b.initiative - a.initiative);
       return sortedChars;
     case CHANGE_TURN:
-
+      console.log('Changing Turn');
+      const stateCopy = [...state];
+      console.log(stateCopy);
+      return turnChanger(stateCopy);
     default:
       console.log('something went wrong');
       return state;

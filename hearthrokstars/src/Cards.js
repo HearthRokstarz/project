@@ -11,28 +11,30 @@ export const Cards = () => {
     <div>
       {characters ? (
         <div class='columns'>
-          {characters.map((character, i) => {
-            !character.isTurn ? (
-              <div class='column is-narrow'>
-                <div class='box' style={{ width: '200px' }}>
-                  <p key={i} class='bd-notification is-primary'>
-                    {character.name} {character.initiative}
-                  </p>
+          {characters.map((character, i) => (
+            <div key={i}>
+              {!character.isTurn ? (
+                <div class='column is-narrow'>
+                  <div class='box' style={{ width: '200px' }}>
+                    <p key={i} class='bd-notification is-primary'>
+                      {character.name} {character.initiative}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ) : (
-              <div class='column is-narrow'>
-                <div
-                  class='box'
-                  style={{ width: '200px', background: '#FF33CA' }}
-                >
-                  <p key={i} class='bd-notification is-primary'>
-                    {character.name} {character.initiative}
-                  </p>
+              ) : (
+                <div class='column is-narrow'>
+                  <div
+                    class='box'
+                    style={{ width: '200px', background: '#FF33CA' }}
+                  >
+                    <p key={i} class='bd-notification is-primary'>
+                      {character.name} {character.initiative}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            );
-          })}{' '}
+              )}
+            </div>
+          ))}{' '}
         </div>
       ) : (
         <div></div>
