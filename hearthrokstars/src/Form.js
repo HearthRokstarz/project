@@ -22,7 +22,7 @@ export function Form() {
 
   //not done
   const handleTurn = () => {
-    console.log('handling turn in form component');
+    //console.log('handling turn in form component');
     dispatch({ type: 'CHANGE_TURN' });
   };
 
