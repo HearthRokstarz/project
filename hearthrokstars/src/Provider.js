@@ -1,7 +1,11 @@
 import React from 'react';
 
 //Our initial state creates an array that will hold all of our "character" objects
-const initialState = [];
+const initialState = [
+  { name: 'John', initiative: '3', isTurn: false },
+  { name: 'Finn', initiative: '2', isTurn: false },
+  { name: 'Riley', initiative: '1', isTurn: false },
+];
 
 //create context allows us to use the Provider component to wrap around our children components and pass data on line 30
 const charContext = React.createContext(initialState);
@@ -14,20 +18,62 @@ const CHANGE_TURN = 'CHANGE_TURN';
 //FUNCTION FOR HANDLING
 const turnChanger = (arr) => {
   //if isTurn is true, set to false and if the next elem does not exist set first elem to true
-  let curr = 0;
-  while (!arr[curr].isTurn) {
-    let next = curr + 1;
-    if (arr[next]) {
-      if (arr[next].isTurn) {
-        arr[next].isTurn = false;
-        arr[next + 1] ? (arr[next + 1].isTurn = true) : (arr[0].isTurn = true);
+  let start = arr[0];
+
+  for (let i = 0; i < arr.length; i++) {
+    let elem = arr[i];
+    let next = arr[i + 1];
+    if (elem.isTurn) {
+      elem.isTurn = false;
+      if (next) {
+        console.log('this is working', elem, next);
+        next.isTurn = true;
+        return arr;
+      } else {
+        start.isTurn = true;
         return arr;
       }
     }
-    curr++;
   }
-  arr[0].isTurn = true;
+  start.isTurn = true;
   return arr;
+
+  // let curr = 0;
+  // let next = 1;
+  // let final = 2;
+
+  // console.log('This is the current character', arr[curr]);
+
+  // let elem = arr[curr];
+
+  // if (elem.isTurn) {
+  //   let nextElem = arr[next];
+  //   elem.isTurn = false;
+  //   nextElem.isTurn = true;
+  //   return arr;
+  // }
+
+  // while (!elem.isTurn) {
+  //   let nextElem = arr[next];
+  //   let finalElem = arr[final];
+  //   if (nextElem) {
+  //     if (nextElem.isTurn) {
+  //       nextElem.isTurn = false;
+  //       finalElem ? (finalElem.isTurn = true) : (arr[0].isTurn = true);
+  //       return arr;
+  //     }
+  //   }
+  //   curr++;
+  //   if (curr > arr.length - 1) {
+  //     arr[0].isTurn = true;
+  //     return arr;
+  //   }
+
+  //   elem = arr[curr];
+  //   next++;
+  //   final++;
+  // }
+  // return arr;
 };
 
 //This Reducer allows us to pass in state (see below) and an action object (above) and will make/rerturn changes to state based on the action type
@@ -43,7 +89,7 @@ const reducer = (state = initialState, action) => {
         .sort((a, b) => b.initiative - a.initiative);
       return sortedChars;
     case CHANGE_TURN:
-      console.log('Changing Turn');
+      console.log('Changing Turn in reducer');
       const stateCopy = [...state];
       console.log(stateCopy);
       return turnChanger(stateCopy);
