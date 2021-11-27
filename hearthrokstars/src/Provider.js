@@ -99,7 +99,7 @@ const reducer = (state = initialState, action) => {
       return sortedChars;
     case CHANGE_TURN:
       //console.log('Changing Turn in reducer');
-      //this bitch right here vvvv was "statecopy = [...state] which WILL NOT work on an array of objects
+      //this bitch right here vvvv was "statecopy = [...state] which WILL NOT work on an array of objects, and probably (?) will not work for monsters having nested objects
       const stateCopy = state.map((a) => {
         return { ...a };
       });

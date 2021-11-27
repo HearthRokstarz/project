@@ -13,7 +13,12 @@ export function Form() {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     alert('Things are a-happening!');
-    const character = { name: name, initiative: initiative, isTurn: false };
+    const character = {
+      name: name,
+      initiative: initiative,
+      isTurn: false,
+      status: null,
+    };
     dispatch({ type: 'ADD_CHAR', value: character });
     console.log(charState);
     setName('');
